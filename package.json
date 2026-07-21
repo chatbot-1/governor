@@ -1,0 +1,64 @@
+{
+  "name": "@chatbot-1/governor",
+  "version": "1.0.0",
+  "description": "A distributed rate limiting library implementing token bucket, sliding window log, and sliding window counter algorithms. Local (in-memory) and Redis-backed distributed modes.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:redis": "jest --config jest.integration.config.js --runInBand",
+    "bench": "node --expose-gc --import tsx ./benchmarks/benchmark.ts",
+    "example": "tsx ./examples/express/server.ts",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "rate-limiter",
+    "rate-limiting",
+    "throttle",
+    "token-bucket",
+    "sliding-window",
+    "redis",
+    "distributed"
+  ],
+  "author": "Atul Singh <getupmaverick@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chatbot-1/governor.git"
+  },
+  "homepage": "https://github.com/chatbot-1/governor#readme",
+  "bugs": {
+    "url": "https://github.com/chatbot-1/governor/issues"
+  },
+  "peerDependencies": {
+    "ioredis": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "ioredis": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.0.0",
+    "express": "^5.2.1",
+    "ioredis": "^5.11.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "tsx": "^4.23.1",
+    "typescript": "^5.4.0"
+  }
+}
